@@ -1,0 +1,17 @@
+:root{
+  --phosphor:#ffb000; /* gold */
+  --bg:#000;
+  font-size:18px;
+}
+body{background:var(--bg);color:var(--phosphor);font-family:Courier,monospace;margin:0;height:100vh;display:flex;align-items:center;justify-content:center;}
+.terminal{width:90%;max-width:500px;}
+label{display:block;margin:10px 0;}
+input{background:transparent;border:none;border-bottom:1px solid var(--phosphor);color:var(--phosphor);width:100%;outline:none;font:inherit;}
+button{background:var(--phosphor);color:#000;border:none;padding:6px 12px;font-weight:bold;margin-top:10px;cursor:pointer;}
+.blink{animation:blink 1s steps(2,start) infinite;}
+@keyframes blink{to{opacity:0;}}
+.cog{position:fixed;top:10px;right:10px;font-size:24px;background:none;border:none;color:var(--phosphor);cursor:pointer;}
+#settingsPanel{position:fixed;top:20%;left:50%;transform:translateX(-50%);background:#111;border:1px solid var(--phosphor);padding:20px;display:none;}
+#settingsPanel.show{display:block;}
+.hidden{display:none;}
+

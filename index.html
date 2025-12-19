@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>PRCo Terminal</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<div class="terminal">
+  <pre>PRCo SECURE TERMINAL v1.00
+(C) 2025 PLAINRIGHTCO
+---------------------------</pre>
+
+  <label>EMAIL:
+    <input id="email" type="email" autocomplete="email" />
+  </label>
+
+  <label>PASSWORD:
+    <input id="pass" type="password" />
+  </label>
+
+  <button id="loginBtn">LOGIN</button>
+  <span id="cursor" class="blink">_</span>
+</div>
+
+<button id="settingsBtn" class="cog">⚙️</button>
+
+<div id="settingsPanel" class="hidden">
+  <h2>SETTINGS</h2>
+  <label><input type="checkbox" id="soundToggle" checked /> Sounds</label>
+  <label>Theme:
+    <select id="themeSelect">
+      <option value="gold">Gold</option>
+      <option value="amber">Amber</option>
+      <option value="green">Green</option>
+    </select>
+  </label>
+  <button id="closeSettings">CLOSE</button>
+</div>
+
+<audio id="keySound" src="key.wav" preload="auto"></audio>
+<audio id="returnSound" src="return.wav" preload="auto"></audio>
+
+<script src="script.js"></script>
+</body>
+</html>
+
