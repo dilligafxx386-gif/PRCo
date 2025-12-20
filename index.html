@@ -5,6 +5,17 @@
 <title>PRCo Terminal</title>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="stylesheet" href="style.css" />
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+<script>
+  const firebaseConfig = {
+    apiKey: "AIzaSyCj3D95AiWXm_5woa5T4Lo7zW_gkX1aB4Q",
+    authDomain: "prco-terminal.firebaseapp.com",
+    projectId: "prco-terminal",
+    appId: "1:"+Math.random().toString(36).slice(2)+":web:dummy" // fallback
+  };
+  firebase.initializeApp(firebaseConfig);
+</script>
 </head>
 <body>
 <div class="terminal">
