@@ -16,8 +16,24 @@
   };
   firebase.initializeApp(firebaseConfig);
 </script>
+<style>
+.crt-nav{display:flex;gap:10px;padding:8px 12px;border-bottom:2px solid var(--phosphor);}
+.crt-nav a{color:var(--phosphor);text-decoration:none;padding:4px 8px;border:1px solid transparent;}
+.crt-nav a.active,.crt-nav a:hover{border:1px solid var(--phosphor);}
+</style><style>
+.crt-nav{display:flex;gap:10px;padding:8px 12px;border-bottom:2px solid var(--phosphor);}
+.crt-nav a{color:var(--phosphor);text-decoration:none;padding:4px 8px;border:1px solid transparent;}
+.crt-nav a.active,.crt-nav a:hover{border:1px solid var(--phosphor);}
+</style>
 </head>
 <body>
+  <nav class="crt-nav">
+  <a href="index.html" class="active">HOME</a>
+  <a href="atlas.html">ATLAS</a>
+  <a href="legal.html">LEGAL</a>
+  <a href="vault.html">VAULT</a>
+  <a href="videos.html">VIDEOS</a>
+</nav>
 <div class="terminal">
   <pre>PRCo SECURE TERMINAL v1.00
 (C) 2025 PLAINRIGHTCO
