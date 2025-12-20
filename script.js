@@ -1,4 +1,6 @@
 // sound on/off
+// Set button font family
+document.querySelectorAll('button').forEach(b => b.style.fontFamily = 'Courier New,Courier,monospace');
 const keySound   = document.getElementById('keySound');
 const returnSound= document.getElementById('returnSound');
 const soundToggle= document.getElementById('soundToggle');
@@ -19,7 +21,16 @@ document.getElementById('closeSettings').onclick = () => panel.classList.remove(
 
 // theme swap
 document.getElementById('themeSelect').addEventListener('change', e => {
-  const colors = { gold:'#ffb000', amber:'#ffbf00', green:'#00ff00' };
+  const colors = {
+  gold:'#ffb000',
+  amber:'#ffbf00',
+  green:'#00ff00',
+  pink:'#ff66cc',
+  lightblue:'#66ccff',
+  purple:'#cc66ff',
+  red:'#ff6666'
+}
+;
   document.documentElement.style.setProperty('--phosphor', colors[e.target.value]);
 });
 
