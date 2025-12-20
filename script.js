@@ -12,6 +12,11 @@ document.querySelectorAll('button').forEach(b=>b.style.fontFamily='Courier New,C
 const email  = document.getElementById('email');
 const pass   = document.getElementById('pass');
 const login  = document.getElementById('loginBtn');
+.then(u => {
+  alert('Logged in: '+u.user.email);
+  // store user UID for later subscription checks
+  localStorage.uid = u.user.uid;
+})
 
 login.addEventListener('click', () => {
   firebase.auth().signInWithEmailAndPassword(email.value, pass.value)
