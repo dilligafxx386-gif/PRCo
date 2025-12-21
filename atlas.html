@@ -1,3 +1,31 @@
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const panel = document.getElementById('settingsPanel');
+  const settingsBtn = document.getElementById('settingsBtn');
+  const closeSettings = document.getElementById('closeSettings');
+  if (settingsBtn && panel) {
+    settingsBtn.addEventListener('click', function() {
+      panel.classList.toggle('hidden');
+      panel.classList.toggle('show');
+    });
+  }
+  if (closeSettings && panel) {
+    closeSettings.addEventListener('click', function() {
+      panel.classList.add('hidden');
+      panel.classList.remove('show');
+    });
+  }
+  const themeSelect = document.getElementById('themeSelect');
+  if (themeSelect) {
+    themeSelect.addEventListener('change', e => {
+      const colors = { gold:'#ffb000', amber:'#ffbf00', green:'#00ff00', pink:'#ff66cc', lightblue:'#66ccff', purple:'#cc66ff', red:'#ff6666' };
+      document.documentElement.style.setProperty('--phosphor', colors[e.target.value]);
+    });
+  }
+});
+</script>
 <!DOCTYPE html>
 <html lang="en">
 <head>
