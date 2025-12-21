@@ -10,13 +10,39 @@ resize(); addEventListener('resize', resize);
 let scale = 1,  ox = 0, oy = 0;
 let isDown = false, startX, startY, startOx, startOy;
 
-// mini-map off by default (toggle in ⚙️ later)
+// mini-map
 let showMini = true;
 const miniSize = 120, miniMargin = 10;
 
-// stickies + lines
-let stickies = JSON.parse(localStorage.getItem('atlasStickies')||'[]');
-let lines    = JSON.parse(localStorage.getItem('atlasLines')||'[]');
+// data holders
+let stickies = [], lines = [];
+let uid = localStorage.uid || 'demo';   // fallback until login
+
+// FIRESTORE refs
+const db = firebase.firestore();
+const userDoc = db.collection('atlases').doc(uid);
+
+// load from cloud
+userDoc.get().then(snap => {
+  if (snap.exists) {
+    const data = snap.data();
+    stickies = data.stickies || [];
+    lines    = data.lines    || [];
+  } else {
+    // first visit → seed empty
+    stickies = []; lines = [];
+  }
+  draw();
+});
+
+// save to cloud (throttled)
+let saveTimer;
+function saveCloud(){
+  clearTimeout(saveTimer);
+  saveTimer = setTimeout(() => {
+    userDoc.set({stickies, lines, uid}, {merge:true});
+  }, 500);
+}
 
 // smooth pan
 canvas.addEventListener('mousedown', e => { isDown = true; startX = e.clientX; startY = e.clientY; startOx = ox; startOy = oy; });
@@ -24,7 +50,7 @@ addEventListener('mousemove', e => { if (!isDown) return; ox = startOx + (e.clie
 addEventListener('mouseup', () => isDown = false);
 canvas.addEventListener('mouseleave', () => isDown = false);
 
-// wheel zoom (centered on cursor)
+// wheel zoom
 canvas.addEventListener('wheel', e => {
   e.preventDefault();
   const mx = e.clientX, my = e.clientY;
@@ -36,47 +62,15 @@ canvas.addEventListener('wheel', e => {
   draw();
 });
 
-// touch zoom + pan
-let touchDist = 0;
-canvas.addEventListener('touchstart', e => {
-  if (e.touches.length === 2) {
-    const dx = e.touches[0].clientX - e.touches[1].clientX;
-    const dy = e.touches[0].clientY - e.touches[1].clientY;
-    touchDist = Math.hypot(dx, dy);
-  } else if (e.touches.length === 1) {
-    isDown = true; startX = e.touches[0].clientX; startY = e.touches[0].clientY; startOx = ox; startOy = oy;
-  }
-});
-addEventListener('touchmove', e => {
-  if (e.touches.length === 2) {
-    e.preventDefault();
-    const dx = e.touches[0].clientX - e.touches[1].clientX;
-    const dy = e.touches[0].clientY - e.touches[1].clientY;
-    const newDist = Math.hypot(dx, dy);
-    if (touchDist > 0 && newDist > 0) {
-      const ws = newDist / touchDist;
-      scale *= ws;
-      scale = Math.max(0.2, Math.min(scale, 5));
-      touchDist = newDist;
-      draw();
-    }
-  } else if (isDown && e.touches.length === 1) {
-    ox = startOx + (e.touches[0].clientX - startX);
-    oy = startOy + (e.touches[0].clientY - startY);
-    draw();
-  }
-});
-addEventListener('touchend', () => { isDown = false; touchDist = 0; });
-
 // add sticky
 addBtn.addEventListener('click', () => {
   const txt = prompt('NOTE TEXT:');
   if (!txt) return;
   stickies.push({x:-ox/scale + 200, y:-oy/scale + 200, w:150, h:80, text:txt, color:Math.random()>.5?'#ffb000':'#66ccff'});
-  saveAll(); draw();
+  saveCloud(); draw();
 });
 
-// draw loop
+// draw loop (same as before + mini-map)
 function draw(){
   ctx.setTransform(1,0,0,1,0,0);
   ctx.clearRect(0,0,canvas.width,canvas.height);
@@ -123,14 +117,9 @@ function drawMiniMap(){
   ctx.fillRect(mx,my,miniSize,miniSize);
   ctx.strokeStyle = 'var(--phosphor)';
   ctx.strokeRect(mx,my,miniSize,miniSize);
-  // viewport rect
   const vx = -ox/scale*sx + mx, vy = -oy/scale*sy + my,
         vw = canvas.width/scale*sx, vh = canvas.height/scale*sy;
   ctx.strokeStyle = '#fff'; ctx.strokeRect(vx,vy,vw,vh);
-}
-function saveAll(){
-  localStorage.setItem('atlasStickies', JSON.stringify(stickies));
-  localStorage.setItem('atlasLines', JSON.stringify(lines));
 }
 
 // initial draw
