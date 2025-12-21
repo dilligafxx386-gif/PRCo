@@ -8,39 +8,27 @@
     <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
     <script>
-        const firebaseConfig = {
+      const firebaseConfig = {
         apiKey: "AIzaSyCj3D95AiWXm_5woa5T4Lo7zW_gkX1aB4Q",
         projectId: "prco-terminal",
         appId: "1:"+Math.random().toString(36).slice(2)+":web:dummy" // fallback
       };
       firebase.initializeApp(firebaseConfig);
     </script>
-        <div id="settingsPanel" class="hidden" style="position:fixed;top:60px;right:20px;background:#111;border:1px solid var(--phosphor);padding:20px;z-index:2000;">
-          <button id="closeSettings" style="float:right;background:none;border:none;color:var(--phosphor);font-size:1.2em;cursor:pointer;">✖</button>
-          <h3>Settings</h3>
-          <!-- Add your settings controls here -->
-        </div>
-
-        <script>
-          document.addEventListener('DOMContentLoaded', function() {
-            var settingsBtn = document.getElementById('settingsBtn');
-            var settingsPanel = document.getElementById('settingsPanel');
-            var closeSettings = document.getElementById('closeSettings');
-            if(settingsBtn && settingsPanel) {
-              settingsBtn.addEventListener('click', function() {
-                settingsPanel.classList.toggle('hidden');
-                settingsPanel.classList.toggle('show');
-              });
-            }
-            if(closeSettings && settingsPanel) {
-              closeSettings.addEventListener('click', function() {
-                settingsPanel.classList.add('hidden');
-                settingsPanel.classList.remove('show');
-              });
-            }
-          });
-        </script>
-    </body>
+    <style>
+      .crt-nav {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 12px;
+        padding: 6px 0;
+        border-bottom: 2px solid var(--phosphor);
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        background: var(--bg, #111);
+        z-index: 1000;
       }
       .crt-nav-inner {
         display: flex;
@@ -104,18 +92,31 @@
       <span id="cursor" class="blink">_</span>
     </div>
 
-</body>
-<<script>
-// settings panel toggle (same as index)
-const panel = document.getElementById('settingsPanel');
-document.getElementById('settingsBtn').onclick = () => panel.classList.add('show');
-document.getElementById('closeSettings').onclick = () => panel.classList.remove('show');
-// theme switcher (same as index)
-document.getElementById('themeSelect').addEventListener('change', e => {
-  const colors = { gold:'#ffb000', amber:'#ffbf00', green:'#00ff00', pink:'#ff66cc', lightblue:'#66ccff', purple:'#cc66ff', red:'#ff6666' };
-  document.documentElement.style.setProperty('--phosphor', colors[e.target.value]);
-});
-</script>
+    <div id="settingsPanel" class="hidden" style="position:fixed;top:60px;right:20px;background:#111;border:1px solid var(--phosphor);padding:20px;z-index:2000;">
+      <button id="closeSettings" style="float:right;background:none;border:none;color:var(--phosphor);font-size:1.2em;cursor:pointer;">✖</button>
+      <h3>Settings</h3>
+      <div style="color:var(--phosphor);font-size:1em;">No settings available yet.</div>
+    </div>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        var settingsBtn = document.getElementById('settingsBtn');
+        var settingsPanel = document.getElementById('settingsPanel');
+        var closeSettings = document.getElementById('closeSettings');
+        if(settingsBtn && settingsPanel) {
+          settingsBtn.addEventListener('click', function() {
+            settingsPanel.classList.toggle('hidden');
+            settingsPanel.classList.toggle('show');
+          });
+        }
+        if(closeSettings && settingsPanel) {
+          closeSettings.addEventListener('click', function() {
+            settingsPanel.classList.add('hidden');
+            settingsPanel.classList.remove('show');
+          });
+        }
+      });
+    </script>
 </body>
 </html>
 
