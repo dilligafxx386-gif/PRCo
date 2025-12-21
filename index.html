@@ -49,6 +49,8 @@
         cursor: pointer;
         color: var(--phosphor);
         margin-left: 16px;
+        position: relative;
+        top: -4px;
       }
       .crt-nav a{color:var(--phosphor);text-decoration:none;padding:4px 10px;border:1px solid transparent;}
       .crt-nav a.active,.crt-nav a:hover{border:1px solid var(--phosphor);}
@@ -90,7 +92,20 @@
       <span id="cursor" class="blink">_</span>
     </div>
 
-    <div id="settingsPanel" class="hidden"> … </div>  <!-- keep existing panel here -->
+</body>
+<script>
+  // Settings button toggle logic
+  document.addEventListener('DOMContentLoaded', function() {
+    var settingsBtn = document.getElementById('settingsBtn');
+    var settingsPanel = document.getElementById('settingsPanel');
+    if(settingsBtn && settingsPanel) {
+      settingsBtn.addEventListener('click', function() {
+        settingsPanel.classList.toggle('hidden');
+        settingsPanel.classList.toggle('show');
+      });
+    }
+  });
+</script>
 </body>
 </html>
 
