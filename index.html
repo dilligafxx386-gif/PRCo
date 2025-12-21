@@ -1,66 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
     <meta charset="UTF-8">
     <title>PRCo</title>
-<link rel="stylesheet" href="style.css" />
-<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
-    <script src="script.js" defer></script>
-  const firebaseConfig = {
-    apiKey: "AIzaSyCj3D95AiWXm_5woa5T4Lo7zW_gkX1aB4Q",
-    <h1>Welcome to PRCo</h1>
-    <p>Edit this page to get started.</p>
-    projectId: "prco-terminal",
-    appId: "1:"+Math.random().toString(36).slice(2)+":web:dummy" // fallback
-  };
-  firebase.initializeApp(firebaseConfig);
-</script>
-<style>
-.crt-nav{display:flex;gap:10px;padding:8px 12px;border-bottom:2px solid var(--phosphor);}
-.crt-nav a{color:var(--phosphor);text-decoration:none;padding:4px 8px;border:1px solid transparent;}
-.crt-nav a.active,.crt-nav a:hover{border:1px solid var(--phosphor);}
-</style><style>
-.crt-nav{display:flex;gap:10px;padding:8px 12px;border-bottom:2px solid var(--phosphor);}
-.crt-nav a{color:var(--phosphor);text-decoration:none;padding:4px 8px;border:1px solid transparent;}
-.crt-nav a.active,.crt-nav a:hover{border:1px solid var(--phosphor);}
-<style>
-.crt-nav{display:flex;justify-content:center;gap:12px;padding:6px 0;border-bottom:2px solid var(--phosphor);}
-.crt-nav a{color:var(--phosphor);text-decoration:none;padding:4px 10px;border:1px solid transparent;}
-.crt-nav a.active,.crt-nav a:hover{border:1px solid var(--phosphor);}
-body{margin:0;background:var(--bg);}
-</style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+    <script>
+      const firebaseConfig = {
+        apiKey: "AIzaSyCj3D95AiWXm_5woa5T4Lo7zW_gkX1aB4Q",
+        projectId: "prco-terminal",
+        appId: "1:"+Math.random().toString(36).slice(2)+":web:dummy" // fallback
+      };
+      firebase.initializeApp(firebaseConfig);
+    </script>
+    <style>
+      .crt-nav{display:flex;justify-content:center;gap:12px;padding:6px 0;border-bottom:2px solid var(--phosphor);}
+      .crt-nav a{color:var(--phosphor);text-decoration:none;padding:4px 10px;border:1px solid transparent;}
+      .crt-nav a.active,.crt-nav a:hover{border:1px solid var(--phosphor);}
+      body{margin:0;background:var(--bg);}
+    </style>
 </head>
 <body>
-<nav class="crt-nav">
-  <a href="index.html" class="active">HOME</a>
-  <a href="atlas.html">ATLAS</a>
-  <a href="legal.html">LEGAL</a>
-  <a href="vault.html">VAULT</a>
-  <a href="videos.html">VIDEOS</a>
-</nav>
+    <h1>Welcome to PRCo</h1>
+    <p>Edit this page to get started.</p>
+    <nav class="crt-nav">
+      <a href="index.html" class="active">HOME</a>
+      <a href="atlas.html">ATLAS</a>
+      <a href="legal.html">LEGAL</a>
+      <a href="vault.html">VAULT</a>
+      <a href="videos.html">VIDEOS</a>
+    </nav>
 
-<div class="terminal" style="margin-top:50px;">
-  <pre>PRCo SECURE TERMINAL v1.00
-(C) 2025 PLAINRIGHTCO
----------------------------</pre>
+    <div class="terminal" style="margin-top:50px;">
+      <pre>PRCo SECURE TERMINAL v1.00
+      (C) 2025 PLAINRIGHTCO
+      ---------------------------</pre>
 
-  <label>EMAIL:
-    <input id="email" type="email" autocomplete="email" />
-  </label>
+      <label>EMAIL:
+        <input id="email" type="email" autocomplete="email" />
+      </label>
 
-  <label>PASSWORD:
-    <input id="pass" type="password" />
-  </label>
+      <label>PASSWORD:
+        <input id="pass" type="password" />
+      </label>
 
-  <button id="loginBtn">LOGIN</button>
-  <span id="cursor" class="blink">_</span>
-</div>
+      <button id="loginBtn">LOGIN</button>
+      <span id="cursor" class="blink">_</span>
+    </div>
 
-<button id="settingsBtn" class="cog">⚙️</button>
-<div id="settingsPanel" class="hidden"> … </div>  <!-- keep existing panel here -->
-
-<script src="script.js"></script>
+    <button id="settingsBtn" class="cog">⚙️</button>
+    <div id="settingsPanel" class="hidden"> … </div>  <!-- keep existing panel here -->
 </body>
 </html>
 
