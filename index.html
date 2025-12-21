@@ -93,18 +93,16 @@
     </div>
 
 </body>
-<script>
-  // Settings button toggle logic
-  document.addEventListener('DOMContentLoaded', function() {
-    var settingsBtn = document.getElementById('settingsBtn');
-    var settingsPanel = document.getElementById('settingsPanel');
-    if(settingsBtn && settingsPanel) {
-      settingsBtn.addEventListener('click', function() {
-        settingsPanel.classList.toggle('hidden');
-        settingsPanel.classList.toggle('show');
-      });
-    }
-  });
+<<script>
+// settings panel toggle (same as index)
+const panel = document.getElementById('settingsPanel');
+document.getElementById('settingsBtn').onclick = () => panel.classList.add('show');
+document.getElementById('closeSettings').onclick = () => panel.classList.remove('show');
+// theme switcher (same as index)
+document.getElementById('themeSelect').addEventListener('change', e => {
+  const colors = { gold:'#ffb000', amber:'#ffbf00', green:'#00ff00', pink:'#ff66cc', lightblue:'#66ccff', purple:'#cc66ff', red:'#ff6666' };
+  document.documentElement.style.setProperty('--phosphor', colors[e.target.value]);
+});
 </script>
 </body>
 </html>
