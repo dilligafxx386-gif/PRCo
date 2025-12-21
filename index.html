@@ -30,6 +30,26 @@
         background: var(--bg, #111);
         z-index: 1000;
       }
+      .crt-nav-inner {
+        display: flex;
+        flex: 1;
+        justify-content: center;
+        align-items: center;
+        gap: 12px;
+      }
+      .crt-nav-right {
+        margin-left: auto;
+        display: flex;
+        align-items: center;
+      }
+      .cog {
+        background: none;
+        border: none;
+        font-size: 1.3em;
+        cursor: pointer;
+        color: var(--phosphor);
+        margin-left: 16px;
+      }
       .crt-nav a{color:var(--phosphor);text-decoration:none;padding:4px 10px;border:1px solid transparent;}
       .crt-nav a.active,.crt-nav a:hover{border:1px solid var(--phosphor);}
       body {
@@ -41,11 +61,16 @@
 </head>
 <body>
     <nav class="crt-nav">
-      <a href="index.html" class="active">HOME</a>
-      <a href="atlas.html">ATLAS</a>
-      <a href="legal.html">LEGAL</a>
-      <a href="vault.html">VAULT</a>
-      <a href="videos.html">VIDEOS</a>
+      <div class="crt-nav-inner">
+        <a href="index.html" class="active">HOME</a>
+        <a href="atlas.html">ATLAS</a>
+        <a href="legal.html">LEGAL</a>
+        <a href="vault.html">VAULT</a>
+        <a href="videos.html">VIDEOS</a>
+      </div>
+      <div class="crt-nav-right">
+        <button id="settingsBtn" class="cog" title="Settings">⚙️</button>
+      </div>
     </nav>
 
     <div class="terminal" style="margin-top:50px;">
@@ -65,7 +90,6 @@
       <span id="cursor" class="blink">_</span>
     </div>
 
-    <button id="settingsBtn" class="cog">⚙️</button>
     <div id="settingsPanel" class="hidden"> … </div>  <!-- keep existing panel here -->
 </body>
 </html>
