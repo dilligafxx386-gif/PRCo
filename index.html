@@ -15,20 +15,32 @@
       };
       firebase.initializeApp(firebaseConfig);
     </script>
-    <style>
-      .crt-nav {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 12px;
-        padding: 6px 0;
-        border-bottom: 2px solid var(--phosphor);
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100vw;
-        background: var(--bg, #111);
-        z-index: 1000;
+        <div id="settingsPanel" class="hidden" style="position:fixed;top:60px;right:20px;background:#111;border:1px solid var(--phosphor);padding:20px;z-index:2000;">
+          <button id="closeSettings" style="float:right;background:none;border:none;color:var(--phosphor);font-size:1.2em;cursor:pointer;">✖</button>
+          <h3>Settings</h3>
+          <!-- Add your settings controls here -->
+        </div>
+
+        <script>
+          document.addEventListener('DOMContentLoaded', function() {
+            var settingsBtn = document.getElementById('settingsBtn');
+            var settingsPanel = document.getElementById('settingsPanel');
+            var closeSettings = document.getElementById('closeSettings');
+            if(settingsBtn && settingsPanel) {
+              settingsBtn.addEventListener('click', function() {
+                settingsPanel.classList.toggle('hidden');
+                settingsPanel.classList.toggle('show');
+              });
+            }
+            if(closeSettings && settingsPanel) {
+              closeSettings.addEventListener('click', function() {
+                settingsPanel.classList.add('hidden');
+                settingsPanel.classList.remove('show');
+              });
+            }
+          });
+        </script>
+    </body>
       }
       .crt-nav-inner {
         display: flex;

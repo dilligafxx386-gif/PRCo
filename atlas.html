@@ -67,17 +67,27 @@
 <canvas id="atlasCanvas"></canvas>
 <button id="addSticky" style="position:fixed;top:50px;right:10px;z-index:10;">+ NOTE</button>
 
-<div id="settingsPanel" class="hidden"> … </div>
-</body>
+    <div id="settingsPanel" class="hidden" style="position:fixed;top:60px;right:20px;background:#111;border:1px solid var(--phosphor);padding:20px;z-index:2000;">
+      <button id="closeSettings" style="float:right;background:none;border:none;color:var(--phosphor);font-size:1.2em;cursor:pointer;">✖</button>
+      <h3>Settings</h3>
+      <!-- Add your settings controls here -->
+    </div>
+
 <script>
-  // Settings button toggle logic
   document.addEventListener('DOMContentLoaded', function() {
     var settingsBtn = document.getElementById('settingsBtn');
     var settingsPanel = document.getElementById('settingsPanel');
+    var closeSettings = document.getElementById('closeSettings');
     if(settingsBtn && settingsPanel) {
       settingsBtn.addEventListener('click', function() {
         settingsPanel.classList.toggle('hidden');
         settingsPanel.classList.toggle('show');
+      });
+    }
+    if(closeSettings && settingsPanel) {
+      closeSettings.addEventListener('click', function() {
+        settingsPanel.classList.add('hidden');
+        settingsPanel.classList.remove('show');
       });
     }
   });
