@@ -16,10 +16,27 @@
       firebase.initializeApp(firebaseConfig);
     </script>
     <style>
-      .crt-nav{display:flex;justify-content:center;gap:12px;padding:6px 0;border-bottom:2px solid var(--phosphor);}
+      .crt-nav {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 12px;
+        padding: 6px 0;
+        border-bottom: 2px solid var(--phosphor);
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        background: var(--bg, #111);
+        z-index: 1000;
+      }
       .crt-nav a{color:var(--phosphor);text-decoration:none;padding:4px 10px;border:1px solid transparent;}
       .crt-nav a.active,.crt-nav a:hover{border:1px solid var(--phosphor);}
-      body{margin:0;background:var(--bg);}
+      body {
+        margin: 0;
+        background: var(--bg);
+        padding-top: 40px;
+      }
     </style>
 </head>
 <body>
