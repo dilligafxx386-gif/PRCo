@@ -43,4 +43,3 @@ class GovDataParser {
 // Export for use in your terminal
 window.GovInfoTest = GovInfoTest;
 window.GovDataParser = GovDataParser;
-
