@@ -1,4 +1,3 @@
-// Copy this entire file - save as gov-vault.js
 class GovInfoTest {
   constructor() {
     this.apiKey = 'kQZZJ61PPt1MuLokMJmekCAoberGOSCS6Sx9Hy3Zp';
